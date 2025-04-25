@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temporizadores de Casas</title>
+  <link rel="stylesheet" href="/public/styles.css" />
+  <script defer src="/public/script.js"></script>
+  <body style="background-color:#000000;">
+  </body>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-4">
+  
+  <div class="text-right text-white mb-1 mr -0">
+    <span class="text-sm font-mono">Hora server: <span id="hora-server"></span></span>
+  </div>
+
+  <h1 class="text-3xl font-bold text-center mb-6" style="color: azure;">Temporizadores de Casas</h1>
+
+  <div class="flex items-center justify-center mb-4 gap-2 text-white">
+    <label for="toggle-activos" class="text-sm">Mostrar solo activos</label>
+    <label class="switch">
+      <input type="checkbox" id="toggle-activos" onchange="filtrarActivos()" />
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+  <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="0">
+      <img src="/public/assets/Casas/Colinas.png" alt="Colinas" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">COLINAS</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">Colinas</h2>
+        <p class="text-sm mb-2">Los Santos, Las Colinas</p>
+        <div class="text-3xl font-mono mb-2" id="timer-0">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(0)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="1">
+      <img src="/public/assets/Casas/LOW.png" alt="Low" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">LOW</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">Low</h2>
+        <p class="text-sm mb-2">Los Santos, Low</p>
+        <div class="text-3xl font-mono mb-2" id="timer-1">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(1)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="2">
+      <img src="/public/assets/Casas/Corona.png" alt="Willow" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">CORONA</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">Willow</h2>
+        <p class="text-sm mb-2">Los Santos, Corona</p>
+        <div class="text-3xl font-mono mb-2" id="timer-2">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(2)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="3">
+      <img src="/public/assets/Casas/C1.png" alt="C1" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">C1</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">C1</h2>
+        <p class="text-sm mb-2">San Fierro, Garcia</p>
+        <div class="text-3xl font-mono mb-2" id="timer-3">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(3)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="4">
+      <img src="/public/assets/Casas/C2.png" alt="C2" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">C2</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">C2</h2>
+        <p class="text-sm mb-2">San Fierro, Garcia</p>
+        <div class="text-3xl font-mono mb-2" id="timer-4">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(4)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="5">
+      <img src="/public/assets/Casas/C3.png" alt="C3" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">C3</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">C3</h2>
+        <p class="text-sm mb-2">San Fierro, Ocean Flats</p>
+        <div class="text-3xl font-mono mb-2" id="timer-5">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(5)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="6">
+      <img src="/public/assets/Casas/C4.png" alt="C4" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">C4</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">C4</h2>
+        <p class="text-sm mb-2">San Fierro, Ocean Flats</p>
+        <div class="text-3xl font-mono mb-2" id="timer-6">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(6)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="7">
+      <img src="/public/assets/Casas/N1.png" alt="Norte 1" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">NORTE 1</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">Norte 1</h2>
+        <p class="text-sm mb-2">Las Venturas, Prickle Pine</p>
+        <div class="text-3xl font-mono mb-2" id="timer-7">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(7)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="8">
+      <img src="/public/assets/Casas/N2.png" alt="Norte 2" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">NORTE 2</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">Norte 2</h2>
+        <p class="text-sm mb-2">Las Venturas, Prickle Pine</p>
+        <div class="text-3xl font-mono mb-2" id="timer-8">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(8)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="9">
+      <img src="/public/assets/Casas/Sprunk.png" alt="Sprunk" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">SPRUNK</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">Sprunk</h2>
+        <p class="text-sm mb-2">Las Venturas, Whitewood Estates</p>
+        <div class="text-3xl font-mono mb-2" id="timer-9">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(9)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="10">
+      <img src="/public/assets/Casas/Quebrados.png" alt="El Quebrados" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">EL QUEBRADOS</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">El Quebrados</h2>
+        <p class="text-sm mb-2">Quebrados</p>
+        <div class="text-3xl font-mono mb-2" id="timer-10">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(10)">Iniciar</button>
+      </div>
+    </div>
+    
+    <div class="relative card rounded-2xl overflow-hidden shadow-lg transition duration-300" data-id="11">
+      <img src="/public/assets/Casas/Cruze.png" alt="Cruce" class="card-bg h-48 w-full object-cover transition-transform duration-500" />
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs px-2 py-1 flex justify-center items-center w-full">
+        <span class="font-bold text-custom-size">CRUCE</span>
+      </div>
+      <div class="absolute inset-0 overlay flex flex-col justify-center items-center text-white text-center p-4">
+        <h2 class="text-xl font-bold mb-1">Cruce</h2>
+        <p class="text-sm mb-2">Las Venturas / Los Santos</p>
+        <div class="text-3xl font-mono mb-2" id="timer-11">35:00</div>
+        <button class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" onclick="startTimer(11)">Iniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="alarm-sound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+  <script>
+    function actualizarHoraServer() {
+      const now = new Date().toLocaleTimeString('en-CA', {
+        timeZone: 'Canada/Eastern',
+        hour12: false
+      });
+      document.getElementById('hora-server').textContent = now;
+    }
+    setInterval(actualizarHoraServer, 1000);
+    actualizarHoraServer();
+  </script>  
+</body>
+</html>
