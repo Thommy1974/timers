@@ -110,3 +110,4 @@ function restartTimer(i) {
   updateTimerDisplay(i);
   startTimer(i);
 }
+
