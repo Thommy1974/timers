@@ -1,102 +1,445 @@
+/* Estilos optimizados para Temporizadores de Casas */
+
+/* Cards y efectos hover */
 .card-bg {
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.5s ease;
-  }
-  
-  .card:hover .card-bg {
-    transform: scale(1.1);
-  }
-  
-  .overlay {
-    background: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  
-  .card:hover .overlay,
-  .card.active-timer .overlay {
-    opacity: 1;
-  }
- 
-  .text-custom-size {
-    font-size: 1rem; 
-  }
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
 
-  .toggle-checkbox {
-    accent-color: #3b82f6; /* azul Tailwind */
-  }
+.card:hover .card-bg {
+  transform: scale(1.1);
+}
 
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 42px;
-    height: 24px;
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 24px;
-  }
-  
-  .slider::before {
-    position: absolute;
-    content: "";
-    height: 18px; width: 18px;
-    left: 3px; bottom: 3px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-  }
-  
-  input:checked + .slider {
-    background-color: #3b82f6;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(18px);
-  }
-
-  /* Esto evita que el overlay se oculte si el timer está activo */
-.card .overlay {
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
+
 .card:hover .overlay,
 .card.active-timer .overlay {
   opacity: 1;
 }
 
-#importar-timers-area {
+.text-custom-size {
+  font-size: 1rem; 
+}
+
+.toggle-checkbox {
+  accent-color: #3b82f6; /* azul Tailwind */
+}
+
+/* Switch personalizado */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 18px; 
+  width: 18px;
+  left: 3px; 
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #3b82f6;
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+/* Mantener overlay visible si el timer está activo */
+.card .overlay {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .overlay,
+.card.active-timer .overlay {
+  opacity: 1;
+}
+
+/* Botones de timer */
+.timer-btns {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Botones generales */
+button {
+  transition: background 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+button:active {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Cards principales */
+.card {
+  background: #23272f;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.28);
+  transform: translateY(-2px);
+}
+
+/* Animación de pulso para timers activos */
+.active-timer {
+  animation: pulse-glow 2s infinite;
+  border: 2px solid rgba(59, 130, 246, 0.5);
+}
+
+@keyframes pulse-glow {
+  0% { 
+    box-shadow: 0 4px 24px 0 rgba(59, 130, 246, 0.3);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+  50% { 
+    box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.6);
+    border-color: rgba(59, 130, 246, 0.8);
+  }
+  100% { 
+    box-shadow: 0 4px 24px 0 rgba(59, 130, 246, 0.3);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* Overlay de contenido */
+.overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0,0,0,0.6);
+  transition: opacity 0.4s;
+  backdrop-filter: blur(2px);
+}
+
+/* Estados del timer */
+.text-red-500 {
+  color: #ef4444 !important;
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.text-green-500 {
+  color: #22c55e !important;
+}
+
+.text-blue-500 {
+  color: #3b82f6 !important;
+}
+
+/* Timer en tiempo negativo */
+.negative-timer {
+  color: #ef4444 !important;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.5; }
+}
+
+/* Grid responsivo optimizado */
+@media (max-width: 640px) {
+  #cards {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+  
+  .card {
+    height: 200px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  #cards {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #cards {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  #cards {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* Sidebar optimizado */
+#sidebar {
+  box-shadow: 0 0 24px 0 rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+}
+
+#sidebar .p-5 {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Overlay de fondo */
+#overlay {
+  backdrop-filter: blur(2px);
+  transition: opacity 0.3s ease;
+}
+
+/* Botón hamburguesa mejorado */
+#hamburgerBtn {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+#hamburgerBtn:hover {
+  transform: scale(1.05);
+}
+
+/* Animación para easter egg */
+.easter-egg {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.easter-egg:hover {
+  color: #22c55e;
+  transform: scale(1.1) rotate(5deg);
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+/* Estilos para modales */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
   background: #1e293b;
   border-radius: 12px;
-  padding: 18px 18px 12px 18px;
+  padding: 24px;
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25);
+  max-width: 90vw;
+  width: 400px;
   border: 1px solid #334155;
 }
 
-#importar-timers-json {
-  font-family: 'Fira Mono', 'Consolas', monospace;
-  font-size: 1rem;
+.modal-textarea {
+  width: 100%;
+  height: 180px;
   background: #0f172a;
   color: #fff;
   border: 1px solid #334155;
   border-radius: 8px;
-  margin-bottom: 8px;
+  padding: 10px;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-size: 1rem;
+  margin-bottom: 12px;
   resize: vertical;
+  transition: border-color 0.3s ease;
 }
 
-#importar-timers-error {
+.modal-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.error-message {
   color: #f87171;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
 }
 
+/* Contador de timers activos */
+#contador-activos {
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+/* Efectos de carga */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Efectos de hover mejorados */
+.card:hover {
+  box-shadow: 
+    0 8px 32px 0 rgba(0,0,0,0.28),
+    0 0 0 1px rgba(255,255,255,0.1);
+}
+
+/* Botones de timer específicos */
+.btn-restart {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  transition: all 0.3s ease;
+}
+
+.btn-restart:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  transform: translateY(-1px);
+}
+
+.btn-stop {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transition: all 0.3s ease;
+}
+
+.btn-stop:hover {
+  background: linear-gradient(135deg, #b91c1c, #991b1b);
+  transform: translateY(-1px);
+}
+
+/* Filtros mejorados */
+select {
+  transition: all 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  transform: scale(1.02);
+}
+
+/* Notificaciones toast (para futura implementación) */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #1f2937;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10000;
+  transform: translateX(400px);
+  transition: transform 0.3s ease;
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast.success {
+  border-left: 4px solid #10b981;
+}
+
+.toast.error {
+  border-left: 4px solid #ef4444;
+}
+
+.toast.warning {
+  border-left: 4px solid #f59e0b;
+}
+
+/* Mejoras de accesibilidad */
+button:focus,
+select:focus,
+input:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Reduce motion para usuarios que lo prefieren */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .card:hover .card-bg {
+    transform: none;
+  }
+  
+  .active-timer {
+    animation: none;
+  }
+}
