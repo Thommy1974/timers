@@ -1,5 +1,3 @@
-/* Estilos optimizados para Temporizadores de Casas */
-
 /* Cards y efectos hover */
 .card-bg {
   background-size: cover;
@@ -443,3 +441,4 @@ input:focus {
     animation: none;
   }
 }
+
